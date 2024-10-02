@@ -1,13 +1,14 @@
 import axios from "axios";
 import { ExperienceDto } from "../models/ExperienceDto";
 
-const API_BASE_URL = "https://localhost:7018/api/Experience";
+const API_BASE_URL =
+  "https://tubitak-proje.dev.reisetech.io/api/metapersona/api/Experience";
 
 export const getAllExperiences = async (): Promise<ExperienceDto[]> => {
   const response = await axios.get(`${API_BASE_URL}`);
   return response.data.map(
     (exp: any) =>
-      new ExperienceDto(exp.experience_id, exp.name, exp.description),
+      new ExperienceDto(exp.experience_id, exp.name, exp.description)
   );
 };
 
@@ -18,7 +19,7 @@ export const getExperienceById = async (id: number): Promise<ExperienceDto> => {
 };
 
 export const createExperience = async (
-  dto: ExperienceDto,
+  dto: ExperienceDto
 ): Promise<ExperienceDto> => {
   const response = await axios.post(`${API_BASE_URL}`, dto);
   const exp = response.data;
@@ -27,7 +28,7 @@ export const createExperience = async (
 
 export const updateExperience = async (
   id: number,
-  dto: ExperienceDto,
+  dto: ExperienceDto
 ): Promise<void> => {
   await axios.put(`${API_BASE_URL}/${id}`, dto);
 };

@@ -2,7 +2,8 @@ import axios from "axios";
 import { UserFeedbackDto } from "@/models/UserFeedbackDto";
 
 export class UserFeedbackService {
-  private apiUrl = "https://localhost:7018/api/UserHotelExperience";
+  private apiUrl =
+    "https://tubitak-proje.dev.reisetech.io/api/metapersona/api/UserHotelExperience";
 
   async getFeedbackById(id: number): Promise<UserFeedbackDto> {
     try {

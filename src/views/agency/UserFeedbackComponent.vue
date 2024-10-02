@@ -95,47 +95,23 @@
           />
         </div>
 
-        <div class="mb-3">
-          <label for="experience_1_rating" class="form-label"
-            >Experience 1 Rating:</label
-          >
+        <div
+          class="mb-3"
+          v-for="(experience, index) in [
+            feedback.experience_1,
+            feedback.experience_2,
+            feedback.experience_3,
+          ]"
+          :key="index"
+        >
+          <label :for="`experience_${index + 1}_rating`" class="form-label">
+            '{{ experience }}' Rating:
+          </label>
           <input
-            v-model="feedback.experience_1_rating"
+            v-model="feedback[`experience_${index + 1}_rating`]"
             type="number"
             class="form-control"
-            id="experience_1_rating"
-            min="1"
-            max="10"
-            placeholder="Enter rating"
-            required
-          />
-        </div>
-
-        <div class="mb-3">
-          <label for="experience_2_rating" class="form-label"
-            >Experience 2 Rating:</label
-          >
-          <input
-            v-model="feedback.experience_2_rating"
-            type="number"
-            class="form-control"
-            id="experience_2_rating"
-            min="1"
-            max="10"
-            placeholder="Enter rating"
-            required
-          />
-        </div>
-
-        <div class="mb-3">
-          <label for="experience_3_rating" class="form-label"
-            >Experience 3 Rating:</label
-          >
-          <input
-            v-model="feedback.experience_3_rating"
-            type="number"
-            class="form-control"
-            id="experience_3_rating"
+            :id="`experience_${index + 1}_rating`"
             min="1"
             max="10"
             placeholder="Enter rating"
@@ -242,6 +218,9 @@ export default defineComponent({
         feedback.experience_3 = reservationRequest.exp_3;
         feedback.most_liked_experience = reservationRequest.exp_1;
         feedback.least_liked_experience = reservationRequest.exp_3;
+        console.log(`Experience 1: ${feedback.experience_1}`);
+        console.log(`Experience 2: ${feedback.experience_2}`);
+        console.log(`Experience 3: ${feedback.experience_3}`);
 
         searchPerformed.value = true;
         toast.success("Reservation details loaded successfully.");

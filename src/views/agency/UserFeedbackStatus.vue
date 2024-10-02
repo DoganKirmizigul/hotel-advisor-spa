@@ -60,7 +60,7 @@ export default {
     const getHotelName = async (hotelId) => {
       try {
         const response = await axios.get(
-          `https://localhost:7018/api/Hotel/${hotelId}`
+          `https://tubitak-proje.dev.reisetech.io/api/metapersona/api/Hotel/${hotelId}`
         );
         return response.data.name;
       } catch (error) {
@@ -73,9 +73,11 @@ export default {
       try {
         const [reservationsResponse, feedbackStatusResponse] =
           await Promise.all([
-            axios.get("https://localhost:7018/api/ReservationConfirmed"),
             axios.get(
-              "https://localhost:7018/api/UserHotelExperience/feedback-status"
+              "https://tubitak-proje.dev.reisetech.io/api/metapersona/api/ReservationConfirmed"
+            ),
+            axios.get(
+              "https://tubitak-proje.dev.reisetech.io/api/metapersona/api/UserHotelExperience/feedback-status"
             ),
           ]);
 

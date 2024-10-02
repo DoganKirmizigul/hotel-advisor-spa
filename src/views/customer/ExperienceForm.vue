@@ -116,7 +116,7 @@ export default {
     async fetchExperiences() {
       try {
         const response = await axios.get(
-          "https://localhost:7018/api/experience"
+          "https://tubitak-proje.dev.reisetech.io/api/metapersona/api/experience"
         );
         this.experiences = response.data.map((experience) => ({
           ...experience,
@@ -186,7 +186,7 @@ export default {
         console.log("Reservation DTO:", reservationDto);
 
         await axios.post(
-          "https://localhost:7018/api/reservationRequest",
+          "https://tubitak-proje.dev.reisetech.io/api/metapersona/api/reservationRequest",
           reservationDto
         );
 
